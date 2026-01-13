@@ -1,11 +1,13 @@
+
+
 plugins {
     alias(libs.plugins.android.application)
-    id("com.caoyang.trace.privacy") version "1.0.6-SNAPSHOT"
+    id("com.caoyang.trace.privacy") version "1.0.0"
     alias(libs.plugins.jetbrains.kotlin.android)
 }
 
 extensions.configure<com.example.privacy_detect_plugins.plugins.privacy.PrivacySentryPluginParameter> {
-    methodOwner = "com.example.privacydetect.PrivacySentryRecord"
+    methodOwner = "com.example.privacydetect.privacy_detect.PrivacySentryRecord"
     methodName = "writeToFile"
 }
 
@@ -46,6 +48,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation("commons-io:commons-io:2.15.0")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

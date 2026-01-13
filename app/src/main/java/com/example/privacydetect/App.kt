@@ -4,7 +4,6 @@ import android.app.Application
 
 
 class App : Application() {
-    //private lateinit var referrerClient: InstallReferrerClient
     companion object{
         lateinit var instance: App
     }

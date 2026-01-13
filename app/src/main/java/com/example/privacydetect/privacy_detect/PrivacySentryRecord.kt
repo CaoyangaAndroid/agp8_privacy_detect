@@ -1,7 +1,7 @@
 package com.example.privacydetect.privacy_detect
 
 import com.example.privacydetect.App
-//import org.apache.commons.io.FileUtils
+import org.apache.commons.io.FileUtils
 import java.io.File
 import java.nio.charset.Charset
 import java.text.SimpleDateFormat
@@ -23,11 +23,11 @@ object PrivacySentryRecord {
     fun writeToFile(log: String) {
         val time = simpleDateFormat.format(Date(System.currentTimeMillis()))
         val logFormat = "\n" + time + "\n" + log
-//        FileUtils.write(
-//            logFile,
-//            logFormat,
-//            Charset.defaultCharset(),
-//            true
-//        )
+        FileUtils.write(
+            logFile,
+            logFormat,
+            Charset.defaultCharset(),
+            true
+        )
     }
 }
