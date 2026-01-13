@@ -27,19 +27,18 @@ gradlePlugin {
 publishing {
     publications {
         create<MavenPublication>("maven") {
+            from(components["java"])
             groupId = group.toString()
             artifactId = "privacy-plugin"
             version = version
-
-            from(components["java"])
         }
     }
-    repositories {
-        maven{
-            url = uri(layout.buildDirectory.dir("maven-repo"))
-        }
-        mavenLocal()
-    }
+//    repositories {
+//        maven{
+//            url = uri(layout.buildDirectory.dir("maven-repo"))
+//        }
+//        mavenLocal()
+//    }
 }
 
 dependencies {
