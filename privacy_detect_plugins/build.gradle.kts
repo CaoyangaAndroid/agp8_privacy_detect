@@ -1,10 +1,10 @@
 
 import org.jetbrains.kotlin.ir.backend.js.compile
-repositories {
-    gradlePluginPortal()
-    google()
-    mavenCentral()
-}
+//repositories {
+//    gradlePluginPortal()
+//    google()
+//    mavenCentral()
+//}
 
 plugins {
     `kotlin-dsl`

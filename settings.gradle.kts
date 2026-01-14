@@ -7,7 +7,7 @@ pluginManagement {
                 includeGroupByRegex("androidx.*")
             }
         }
-//        mavenLocal()
+        mavenLocal()
         mavenCentral()
         gradlePluginPortal()
     }
@@ -22,5 +22,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "PrivacyDetect"
 include(":app")
-includeBuild("privacy_detect_plugins")
+include(":privacy_detect_plugins")
+//includeBuild("privacy_detect_plugins")
 //include(":testPlugin")
