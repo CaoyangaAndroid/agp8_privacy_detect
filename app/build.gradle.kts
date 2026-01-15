@@ -2,14 +2,14 @@
 
 plugins {
     alias(libs.plugins.android.application)
-    //id("com.caoyang.trace.privacy") version "1.0.0"
+    id("com.caoyang.trace.privacy")
     alias(libs.plugins.jetbrains.kotlin.android)
 }
 
-//extensions.configure<com.example.privacy_detect_plugins.plugins.privacy.PrivacySentryPluginParameter> {
-//    methodOwner = "com.example.privacydetect.privacy_detect.PrivacySentryRecord"
-//    methodName = "writeToFile"
-//}
+extensions.configure<com.example.privacy_detect_plugins.plugins.privacy.PrivacySentryPluginParameter> {
+    methodOwner = "com.example.privacydetect.privacy_detect.PrivacySentryRecord"
+    methodName = "writeToFile"
+}
 
 android {
     namespace = "com.example.privacydetect"

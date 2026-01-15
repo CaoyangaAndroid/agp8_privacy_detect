@@ -7,9 +7,11 @@ pluginManagement {
                 includeGroupByRegex("androidx.*")
             }
         }
-        mavenLocal()
         mavenCentral()
         gradlePluginPortal()
+        maven{
+            setUrl("https://jitpack.io")
+        }
     }
 }
 dependencyResolutionManagement {
@@ -23,5 +25,3 @@ dependencyResolutionManagement {
 rootProject.name = "PrivacyDetect"
 include(":app")
 include(":privacy_detect_plugins")
-//includeBuild("privacy_detect_plugins")
-//include(":testPlugin")

@@ -10,19 +10,22 @@
 三、检测sdk介绍
 - 对于我们的业务App来说，检测的sdk是完全自研的，完全没有对外出口访问，是符合安全隔离政策的。
 - ASM + Transform 字节码插桩的技术方案是非业务侵入式的开发场景，可以实现热插拔，上线前做一次检测，检测完成后，可轻松实现移除依赖。完全不影响线上代码。
-- 开发好的检测sdk,已上传至maven central仓库，可以多工程直接复用，适用于在测试环境是使用，生产换进需删除依赖
+- 开发好的检测sdk,已上传至https://jitpack.io/仓库，可以多工程直接复用，适用于在测试环境是使用，生产换进需删除依赖
 
 四、maven集成步骤
-1. 设置插件下载源maven ，账号密码如下{
-   url = uri("https://xxxxxxxx")
-   credentials {
-   username = "caoyang"
-   password = "*****"
+1. 设置插件下载源maven ，pluginManagement添加如下：
+   maven{
+       setUrl("https://jitpack.io")
    }
+2. 在工程目录的build.gradle.kts中添加如下内容：
+   buildscript {
+   dependencies {
+   // 使用JitPack生成的完整坐标
+   classpath("com.github.CaoyangaAndroid.agp8_privacy_detect:privacy-plugin:41b7888fdf")
    }
-2. 在app的build.gradle文件中应用插件plugins {id("com.caoyang.trace.privacy") version "1.0.0-SNAPSHOT" }
-3. 在具体的工程目录下app配置日志输出类，以L包为例extensions.configure<com.caoyang.trace.plugins.privacy.PrivacySentryPluginParameter> {
-   methodOwner = "com.logicleaf.cash.privacy_detect.PrivacySentryRecord"
+   }，在app的build.gradle文件中应用插件plugins {id("com.caoyang.trace.privacy")}
+3. 在具体的工程目录下app配置日志输出类，以L包为例extensions.configure<com.example.privacy_detect_plugins.plugins.privacy.PrivacySentryPluginParameter> {
+   methodOwner = "com.example.privacydetect.privacy_detect.PrivacySentryRecord"
    methodName = "writeToFile"
    }
 4. 添加日志文件输出库依赖implementation(Dependencies.Components.commonsIO)
@@ -31,8 +34,5 @@
 sync一下工程，运行后，开始走app的流程。检测结果会在/sdcard/Android/data/app的包名/cache文件夹下生成PrivacySentry.txt文件，打开即可查看，调用过的所有敏感api
 
 六、检测后，去除插件（也可采用独立分支方式解集成）
-1. 在app的build.gradle文件中删除插件plugins {id("com.caoyang.trace.privacy") version "1.0.0-SNAPSHOT" }
-2. 删除extensions.configure<com.caoyang.trace.plugins.privacy.PrivacySentryPluginParameter> {
-   methodOwner = "com.logicleaf.cash.privacy_detect.PrivacySentryRecord"
-   methodName = "writeToFile"
-   }
+1. 删除四、maven集成步骤中的第1，2，3，4中的内容
+2. 也可采用单独创建检测分支的方式，切换开发分支即可
