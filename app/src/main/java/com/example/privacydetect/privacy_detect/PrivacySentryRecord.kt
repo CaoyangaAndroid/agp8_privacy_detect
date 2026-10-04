@@ -9,8 +9,8 @@ import java.util.Date
 import java.util.Locale
 
 /**
- * @Author: leavesCZY
- * @Github: https://github.com/leavesCZY
+ * @Author: CaoyangaAndroid
+ * @Github: https://github.com/CaoyangaAndroid
  * @Desc:
  */
 object PrivacySentryRecord {
