@@ -8,11 +8,6 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-/**
- * @Author: CaoyangaAndroid
- * @Github: https://github.com/CaoyangaAndroid
- * @Desc:
- */
 object PrivacySentryRecord {
 
     private val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS", Locale.CHINA)
